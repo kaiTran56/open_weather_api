@@ -1,4 +1,4 @@
-
+delete from capital_cities;
 /* INSERT QUERY NO: 1 */
 INSERT INTO capital_cities(name, lat, lon)
 VALUES

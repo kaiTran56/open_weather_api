@@ -1,3 +1,4 @@
+delete from provinces;
 INSERT INTO
     provinces(`lat`, `lon`, `name`)
 VALUES
