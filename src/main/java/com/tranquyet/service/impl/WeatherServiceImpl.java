@@ -12,29 +12,30 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tranquyet.constants.ActionType;
+import com.tranquyet.constants.KeyApi;
 import com.tranquyet.domain.CurrentWeatherInfor;
 import com.tranquyet.domain.ForecastWeatherInfor;
+import com.tranquyet.dto.SearchCondition;
 import com.tranquyet.service.WeatherService;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Service
-@Slf4j
 public class WeatherServiceImpl implements WeatherService {
 
 	@Override
-	public CurrentWeatherInfor getCurrentInfor(String url)
+	public CurrentWeatherInfor getCurrentInfor(String url, SearchCondition conditio)
 			throws JsonMappingException, JsonProcessingException, JSONException {
 		ObjectMapper mapper = new ObjectMapper();
+		url = url.replace(KeyApi.REPLACE_COND, conditio.toString());
 		CurrentWeatherInfor currWeather = mapper.readValue(getBody(url, ActionType.CURRENT).toString(),
 				CurrentWeatherInfor.class);
 		return currWeather;
 	}
 
 	@Override
-	public List<ForecastWeatherInfor> getForecastInfor(String url)
+	public List<ForecastWeatherInfor> getForecastInfor(String url, SearchCondition conditio)
 			throws JsonMappingException, JsonProcessingException, JSONException {
 		ObjectMapper mapper = new ObjectMapper();
+		url = url.replace(KeyApi.REPLACE_COND, conditio.toString());
 		JSONArray arr = (JSONArray) getBody(url, ActionType.DAILY);
 		List<ForecastWeatherInfor> tempArr = new ArrayList<>();
 		for (int i = 0; i < arr.length(); i++) {

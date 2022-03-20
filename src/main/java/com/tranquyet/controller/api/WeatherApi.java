@@ -6,26 +6,31 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tranquyet.constants.UrlWeatherApi;
 import com.tranquyet.domain.CurrentWeatherInfor;
 import com.tranquyet.domain.ForecastWeatherInfor;
+import com.tranquyet.dto.SearchCondition;
 import com.tranquyet.service.WeatherService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController(value = "WeatherApi")
-@RequestMapping("/api")
+@RequestMapping("/api/weather")
+@Slf4j
 public class WeatherApi {
 	@Autowired
 	private WeatherService weatherService;
 
-	@GetMapping("/current")
-	public ResponseEntity<CurrentWeatherInfor> getCurrentWeather() {
+	@PostMapping("/current")
+	public ResponseEntity<CurrentWeatherInfor> getCurrentWeather(SearchCondition conditio) {
 		String url = UrlWeatherApi.GET_ONECALL_CURRENT_WEATHER;
+		log.info(conditio.toString());
 		try {
-			Optional<CurrentWeatherInfor> currInfo = Optional.of(weatherService.getCurrentInfor(url));
+			Optional<CurrentWeatherInfor> currInfo = Optional.of(weatherService.getCurrentInfor(url, conditio));
 			return new ResponseEntity<>(currInfo.get(),
 					currInfo.isPresent() ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST);
 		} catch (Exception ex) {
@@ -34,12 +39,13 @@ public class WeatherApi {
 
 	}
 
-	@GetMapping("/forecast")
-	public ResponseEntity<List<ForecastWeatherInfor>> getOnecallWeather() throws Exception {
+	@PostMapping("/forecast")
+	public ResponseEntity<List<ForecastWeatherInfor>> getOnecallWeather(SearchCondition conditio) throws Exception {
 		String url = UrlWeatherApi.GET_ONECALL_FORECAST_WEATHER;
 		try {
 
-			Optional<List<ForecastWeatherInfor>> dailyInfo = Optional.of(weatherService.getForecastInfor(url));
+			Optional<List<ForecastWeatherInfor>> dailyInfo = Optional
+					.of(weatherService.getForecastInfor(url, conditio));
 			return new ResponseEntity<>(dailyInfo.get(),
 					dailyInfo.isPresent() ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST);
 		} catch (Exception ex) {

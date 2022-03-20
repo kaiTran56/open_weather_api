@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.tranquyet.constants.ActionType;
 import com.tranquyet.domain.CurrentWeatherInfor;
 import com.tranquyet.domain.ForecastWeatherInfor;
+import com.tranquyet.dto.SearchCondition;
 
 public interface WeatherService {
 
@@ -36,8 +37,9 @@ public interface WeatherService {
 		}
 	}
 
-	CurrentWeatherInfor getCurrentInfor(String url) throws JsonMappingException, JsonProcessingException, JSONException;
+	CurrentWeatherInfor getCurrentInfor(String url, SearchCondition condition)
+			throws JsonMappingException, JsonProcessingException, JSONException;
 
-	List<ForecastWeatherInfor> getForecastInfor(String url)
+	List<ForecastWeatherInfor> getForecastInfor(String url, SearchCondition conditio)
 			throws JsonMappingException, JsonProcessingException, JSONException;
 }
