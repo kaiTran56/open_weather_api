@@ -15,6 +15,7 @@ import com.tranquyet.constants.ActionType;
 import com.tranquyet.constants.KeyApi;
 import com.tranquyet.domain.CurrentWeatherInfor;
 import com.tranquyet.domain.ForecastWeatherInfor;
+import com.tranquyet.domain.IntervalObject;
 import com.tranquyet.dto.SearchCondition;
 import com.tranquyet.service.WeatherService;
 
@@ -24,10 +25,12 @@ public class WeatherServiceImpl implements WeatherService {
 	@Override
 	public CurrentWeatherInfor getCurrentInfor(String url, SearchCondition conditio)
 			throws JsonMappingException, JsonProcessingException, JSONException {
+
 		ObjectMapper mapper = new ObjectMapper();
 		url = url.replace(KeyApi.REPLACE_COND, conditio.toString());
-		CurrentWeatherInfor currWeather = mapper.readValue(getBody(url, ActionType.CURRENT).toString(),
-				CurrentWeatherInfor.class);
+		IntervalObject obj = getBody(url, ActionType.CURRENT);
+		CurrentWeatherInfor currWeather = mapper.readValue(obj.getObj().toString(), CurrentWeatherInfor.class);
+		currWeather.setTimezone(obj.getTimezone());
 		return currWeather;
 	}
 
@@ -35,12 +38,15 @@ public class WeatherServiceImpl implements WeatherService {
 	public List<ForecastWeatherInfor> getForecastInfor(String url, SearchCondition conditio)
 			throws JsonMappingException, JsonProcessingException, JSONException {
 		ObjectMapper mapper = new ObjectMapper();
+
 		url = url.replace(KeyApi.REPLACE_COND, conditio.toString());
-		JSONArray arr = (JSONArray) getBody(url, ActionType.DAILY);
+		IntervalObject objInte = getBody(url, ActionType.DAILY);
+		JSONArray arr = objInte.getArr();
 		List<ForecastWeatherInfor> tempArr = new ArrayList<>();
 		for (int i = 0; i < arr.length(); i++) {
 			JSONObject obj = arr.getJSONObject(i);
 			ForecastWeatherInfor temp = mapper.readValue(obj.toString(), ForecastWeatherInfor.class);
+			temp.setTimezone(objInte.getTimezone());
 			tempArr.add(temp);
 		}
 		return tempArr;

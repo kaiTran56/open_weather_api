@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tranquyet.utils.DateFormatConverter;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +26,12 @@ public abstract class BasedInfor {
 	private Double clouds;
 	@JsonProperty("weather")
 	private StatusWeather[] status;
-
-	public void setDateTime(String tm) throws Exception {
-		dateTime = (DateFormatConverter.convertUTCtoISO(Long.valueOf(tm)));
-	}
+	@JsonProperty("timezone_offset")
+	private Long timezone;
+//
+//	public void setDateTime(String tm) throws Exception {
+//		dateTime = (DateFormatConverter.convertUTCtoISO(Long.valueOf(tm)));
+//	}
 
 }
 
