@@ -1,4 +1,5 @@
-delete from provinces;
+TRUNCATE `open_weather`.`provinces`;
+
 INSERT INTO
     provinces(`lat`, `lon`, `name`)
 VALUES
