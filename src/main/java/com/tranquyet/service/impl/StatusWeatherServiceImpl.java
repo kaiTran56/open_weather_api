@@ -22,7 +22,7 @@ import com.tranquyet.repository.CapitalCityRepository;
 import com.tranquyet.service.WeatherService;
 
 @Service
-public class WeatherServiceImpl implements WeatherService {
+public class StatusWeatherServiceImpl implements WeatherService {
 	@Autowired
 	private CapitalCityRepository capRepo;
 
