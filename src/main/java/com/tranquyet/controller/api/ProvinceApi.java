@@ -17,7 +17,7 @@ import com.tranquyet.service.ProvinceService;
 import lombok.extern.slf4j.Slf4j;
 
 @CrossOrigin("*")
-@RestController(value = "ProvinceApi")
+@RestController
 @RequestMapping("/api/province")
 @Slf4j
 public class ProvinceApi {

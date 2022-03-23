@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tranquyet.entity.CapitalCityEntity;
 
-@Repository
+@Repository()
 @Transactional
 public interface CapitalCityRepository
 		extends JpaRepository<CapitalCityEntity, Long>, JpaSpecificationExecutor<CapitalCityEntity> {

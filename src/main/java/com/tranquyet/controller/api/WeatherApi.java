@@ -23,7 +23,7 @@ import com.tranquyet.service.WeatherService;
 import lombok.extern.slf4j.Slf4j;
 
 @CrossOrigin("*")
-@RestController(value = "WeatherApi")
+@RestController
 @RequestMapping("/api/weather")
 @Slf4j
 public class WeatherApi {

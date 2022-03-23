@@ -19,7 +19,7 @@ import com.tranquyet.domain.IntervalObject;
 import com.tranquyet.dto.SearchCondition;
 import com.tranquyet.service.WeatherService;
 
-@Service
+@Service("WeatherServiceImpl")
 public class WeatherServiceImpl implements WeatherService {
 
 	@Override

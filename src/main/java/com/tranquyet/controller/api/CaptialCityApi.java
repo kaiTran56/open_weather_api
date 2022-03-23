@@ -17,7 +17,7 @@ import com.tranquyet.service.CapitalCityService;
 import lombok.extern.slf4j.Slf4j;
 
 @CrossOrigin("*")
-@RestController(value = "CaptialCityApi")
+@RestController
 @RequestMapping("/api/cities")
 @Slf4j
 public class CaptialCityApi {

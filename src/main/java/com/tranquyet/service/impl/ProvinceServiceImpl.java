@@ -11,7 +11,7 @@ import com.tranquyet.dto.ProvinceDTO;
 import com.tranquyet.repository.ProvincesRepository;
 import com.tranquyet.service.ProvinceService;
 
-@Service
+@Service("ProvinceServiceImpl")
 public class ProvinceServiceImpl implements ProvinceService {
 	@Autowired
 	private ProvincesRepository provincesRepository;

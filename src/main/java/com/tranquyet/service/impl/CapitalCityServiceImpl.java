@@ -11,7 +11,7 @@ import com.tranquyet.dto.CapitalCityDTO;
 import com.tranquyet.repository.CapitalCityRepository;
 import com.tranquyet.service.CapitalCityService;
 
-@Service
+@Service("CapitalCityServiceImpl")
 public class CapitalCityServiceImpl implements CapitalCityService {
 	@Autowired
 	private CapitalCityRepository repo;
