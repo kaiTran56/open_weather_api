@@ -1,7 +1,6 @@
-TRUNCATE `open_weather`.`provinces`;
-
+TRUNCATE provinces;
 INSERT INTO
-    provinces(`lat`, `lon`, `name`)
+    provinces(lat, lon, name)
 VALUES
     (10.8167,106.6333,'HoChiMinh'),
     (21.0245,105.8412,'HaNoi'),

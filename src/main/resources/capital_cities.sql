@@ -1,4 +1,4 @@
-
+TRUNCATE capital_cities;
 INSERT INTO capital_cities (lat,lon,name) VALUES
     (9.55,44.05,'Hargeisa'),
     (-54.283,-36.5,'King-Edward-Point'),
