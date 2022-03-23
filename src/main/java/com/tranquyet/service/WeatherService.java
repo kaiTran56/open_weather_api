@@ -33,19 +33,20 @@ public interface WeatherService {
 		JsonNode newNode = mapper.readTree(response.getBody());
 		Long timezone = newNode.get(ActionType.TIMEZONE.getKey()).asLong();
 		switch (action) {
-		case CURRENT -> {
+		case CURRENT:
 			JSONObject mainObj = jsonObj.getJSONObject(action.getKey());
 			obj.setObj(mainObj);
 			obj.setTimezone(timezone);
 			return obj;
-		}
-		case DAILY -> {
+
+		case DAILY:
 			JSONArray mainObjs = jsonObj.getJSONArray(action.getKey());
 			obj.setArr(mainObjs);
 			obj.setTimezone(timezone);
 			return obj;
-		}
-		default -> throw new IllegalArgumentException("Unexpected value: " + action);
+
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + action);
 		}
 	}
 
