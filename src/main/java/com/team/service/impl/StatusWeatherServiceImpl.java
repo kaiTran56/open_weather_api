@@ -19,7 +19,10 @@ import com.team.domain.IntervalObject;
 import com.team.dto.SearchCondition;
 import com.team.service.WeatherService;
 
+import lombok.NoArgsConstructor;
+
 @Service
+@NoArgsConstructor
 public class StatusWeatherServiceImpl implements WeatherService {
 
 	@Override
