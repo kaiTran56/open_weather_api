@@ -18,7 +18,7 @@ import com.team.constants.UrlWeatherApi;
 import com.team.domain.CurrentWeatherInfor;
 import com.team.domain.ForecastWeatherInfor;
 import com.team.dto.SearchCondition;
-import com.team.service.WeatherService;
+import com.team.service.StatusWeatherService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WeatherApi {
 	@Autowired
-	private WeatherService weatherService;
+	private StatusWeatherService weatherService;
 
 	@PostMapping("/current")
 	public ResponseEntity<CurrentWeatherInfor> getCurrentWeather(@RequestBody @NotNull SearchCondition conditio) {

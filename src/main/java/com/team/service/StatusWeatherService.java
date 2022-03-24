@@ -18,7 +18,7 @@ import com.team.domain.ForecastWeatherInfor;
 import com.team.domain.IntervalObject;
 import com.team.dto.SearchCondition;
 
-public interface WeatherService {
+public interface StatusWeatherService {
 
 	default IntervalObject getBody(String url, ActionType action)
 			throws JSONException, JsonMappingException, JsonProcessingException {

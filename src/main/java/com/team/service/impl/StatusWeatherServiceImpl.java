@@ -17,13 +17,13 @@ import com.team.domain.CurrentWeatherInfor;
 import com.team.domain.ForecastWeatherInfor;
 import com.team.domain.IntervalObject;
 import com.team.dto.SearchCondition;
-import com.team.service.WeatherService;
+import com.team.service.StatusWeatherService;
 
 import lombok.NoArgsConstructor;
 
 @Service
 @NoArgsConstructor
-public class StatusWeatherServiceImpl implements WeatherService {
+public class StatusWeatherServiceImpl implements StatusWeatherService {
 
 	@Override
 	public CurrentWeatherInfor getCurrentInfor(String url, SearchCondition conditio)
