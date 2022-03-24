@@ -1,4 +1,4 @@
-package com.tranquyet.controller.api;
+package com.tranquyet.controller;
 
 import java.util.List;
 import java.util.Optional;
