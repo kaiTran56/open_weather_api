@@ -21,7 +21,7 @@ import com.team.service.StatusWeatherService;
 
 import lombok.NoArgsConstructor;
 
-@Service
+@Service("statusWeatherServiceImpl")
 @NoArgsConstructor
 public class StatusWeatherServiceImpl implements StatusWeatherService {
 
