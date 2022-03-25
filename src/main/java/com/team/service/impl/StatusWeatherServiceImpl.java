@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -22,7 +21,6 @@ import com.team.service.StatusWeatherService;
 
 import lombok.NoArgsConstructor;
 
-@Service("statusWeatherServiceImpl")
 @NoArgsConstructor
 public class StatusWeatherServiceImpl implements StatusWeatherService {
 
