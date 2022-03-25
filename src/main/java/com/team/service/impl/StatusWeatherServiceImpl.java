@@ -17,6 +17,7 @@ import com.team.domain.CurrentWeatherInfor;
 import com.team.domain.ForecastWeatherInfor;
 import com.team.domain.IntervalObject;
 import com.team.dto.SearchCondition;
+import com.team.repository.DataCenter;
 import com.team.service.StatusWeatherService;
 
 import lombok.NoArgsConstructor;
@@ -31,7 +32,7 @@ public class StatusWeatherServiceImpl implements StatusWeatherService {
 
 		ObjectMapper mapper = new ObjectMapper();
 		url = url.replace(KeyApi.REPLACE_COND, conditio.toString());
-		IntervalObject obj = getBody(url, ActionType.CURRENT);
+		IntervalObject obj = DataCenter.getBody(url, ActionType.CURRENT);
 		CurrentWeatherInfor currWeather = mapper.readValue(obj.getObj().toString(), CurrentWeatherInfor.class);
 		currWeather.setTimezone(obj.getTimezone());
 		return currWeather;
@@ -43,7 +44,7 @@ public class StatusWeatherServiceImpl implements StatusWeatherService {
 		ObjectMapper mapper = new ObjectMapper();
 
 		url = url.replace(KeyApi.REPLACE_COND, conditio.toString());
-		IntervalObject objInte = getBody(url, ActionType.DAILY);
+		IntervalObject objInte = DataCenter.getBody(url, ActionType.DAILY);
 		JSONArray arr = objInte.getArr();
 		List<ForecastWeatherInfor> tempArr = new ArrayList<>();
 		for (int i = 0; i < arr.length(); i++) {

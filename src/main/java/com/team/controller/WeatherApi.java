@@ -58,4 +58,5 @@ public class WeatherApi {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
+
 }
